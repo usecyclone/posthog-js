@@ -2,6 +2,10 @@ import Config from './config'
 import { Breaker, EventHandler, Properties } from './types'
 import { uuidv7 } from './uuidv7'
 
+import FingerprintJS from '@fingerprintjs/fingerprintjs'
+
+import Cookies from 'js-cookie'
+
 /*
  * Saved references to long variable names, so that closure compiler can
  * minimize file size.
@@ -16,6 +20,19 @@ const navigator = win.navigator || { userAgent: '' }
 const document = win.document || {}
 const userAgent = navigator.userAgent
 const localDomains = ['localhost', '127.0.0.1']
+
+// Initialize an agent at application startup.
+const fpPromise = FingerprintJS.load()
+
+let fp: string | undefined = undefined
+
+// Get the visitor identifier when you need it.
+fpPromise
+    .then((fp) => fp.get())
+    .then((result) => {
+        fp = result.visitorId
+        Cookies.set('cyclone-browser-id', result.visitorId)
+    })
 
 const nativeForEach = ArrayProto.forEach,
     nativeIndexOf = ArrayProto.indexOf,
@@ -951,6 +968,7 @@ export const _info = {
                 $device_type: _info.deviceType(userAgent),
             }),
             {
+                $fp_id: fp,
                 $current_url: win?.location.href,
                 $host: win?.location.host,
                 $pathname: win?.location.pathname,
