@@ -2,8 +2,7 @@ import Config from './config'
 import { Breaker, EventHandler, Properties } from './types'
 import { uuidv7 } from './uuidv7'
 
-import FingerprintJS from '@fingerprintjs/fingerprintjs'
-
+import FingerprintJS from '@fingerprintjs/fingerprintjs-pro'
 import Cookies from 'js-cookie'
 
 /*
@@ -22,7 +21,9 @@ const userAgent = navigator.userAgent
 const localDomains = ['localhost', '127.0.0.1']
 
 // Initialize an agent at application startup.
-const fpPromise = FingerprintJS.load()
+const fpPromise = FingerprintJS.load({
+    apiKey: 'K3T2ULCSyPUcS9cA0oMh',
+})
 
 let fp: string | undefined = Cookies.get('cyclone-browser-id')
 
@@ -970,7 +971,7 @@ export const _info = {
                 $device_type: _info.deviceType(userAgent),
             }),
             {
-                $fp_id: fp,
+                $cyclone_browser_id: fp,
                 $current_url: win?.location.href,
                 $host: win?.location.host,
                 $pathname: win?.location.pathname,

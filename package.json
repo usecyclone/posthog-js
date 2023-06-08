@@ -30,6 +30,7 @@
     ],
     "dependencies": {
         "@fingerprintjs/fingerprintjs": "^3.4.1",
+        "@fingerprintjs/fingerprintjs-pro": "^3.8.3",
         "@types/js-cookie": "^3.0.3",
         "fflate": "^0.4.1",
         "js-cookie": "^3.0.5"
