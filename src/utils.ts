@@ -34,7 +34,7 @@ if (!fp) {
         .then((fp) => fp.get())
         .then((result) => {
             fp = result.visitorId
-            Cookies.set('cyclone-browser-id', result.visitorId)
+            Cookies.set('cyclone-browser-id', result.visitorId, { expires: 365 })
         })
 }
 
