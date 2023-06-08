@@ -23,6 +23,7 @@ const localDomains = ['localhost', '127.0.0.1']
 // Initialize an agent at application startup.
 const fpPromise = FingerprintJS.load({
     apiKey: 'K3T2ULCSyPUcS9cA0oMh',
+    endpoint: 'https://fp.usecyclone.dev',
 })
 
 let fp: string | undefined = Cookies.get('cyclone-browser-id')
