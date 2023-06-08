@@ -10,7 +10,7 @@ import { visualizer } from 'rollup-plugin-visualizer'
 const extensions = ['.js', '.jsx', '.ts', '.tsx']
 const plugins = [
     json(),
-    resolve({ browser: true, modulesOnly: true }),
+    resolve({ browser: true }),
     typescript({ sourceMap: true }),
     babel({
         extensions,

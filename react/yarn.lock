@@ -333,13 +333,6 @@
   dependencies:
     tslib "^2.4.1"
 
-"@fingerprintjs/fingerprintjs@^3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@fingerprintjs/fingerprintjs/-/fingerprintjs-3.4.1.tgz#d13228a4cf520f271322113d2179c194cdc34283"
-  integrity sha512-i3TqlaIdF+4qDHP6OStMtLXCnvnoo2C156rNPm9/kIglUtnLAF45+sGkZZmVQB+58dDF0mNpaiqvKHNSR8J1Hg==
-  dependencies:
-    tslib "^2.4.1"
-
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
