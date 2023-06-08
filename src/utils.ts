@@ -24,15 +24,17 @@ const localDomains = ['localhost', '127.0.0.1']
 // Initialize an agent at application startup.
 const fpPromise = FingerprintJS.load()
 
-let fp: string | undefined = undefined
+let fp: string | undefined = Cookies.get('cyclone-browser-id')
 
 // Get the visitor identifier when you need it.
-fpPromise
-    .then((fp) => fp.get())
-    .then((result) => {
-        fp = result.visitorId
-        Cookies.set('cyclone-browser-id', result.visitorId)
-    })
+if (!fp) {
+    fpPromise
+        .then((fp) => fp.get())
+        .then((result) => {
+            fp = result.visitorId
+            Cookies.set('cyclone-browser-id', result.visitorId)
+        })
+}
 
 const nativeForEach = ArrayProto.forEach,
     nativeIndexOf = ArrayProto.indexOf,
